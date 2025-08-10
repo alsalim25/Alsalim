@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>أعلاف السالم</title>
+
+  <!-- Google Font Tajawal -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>أ</text></svg>">
+
+  <meta name="description" content="متجر أعلاف السالم - أعلاف الحمام وطيور الزينة والخلطات الخاصة">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <div class="brand">
+        <!-- استبدل الصورة بلوجو عندك -->
+        <img src="https://via.placeholder.com/80x60?text=Logo" alt="لوغو أعلاف السالم" class="logo">
+        <div>
+          <h1 class="site-title">أعلاف السالم</h1>
+          <p class="tagline">جودة وغِنى بتغذية الطيور</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="search-wrap">
+          <input id="search" placeholder="ابحث عن منتج..." aria-label="بحث">
+        </div>
+
+        <div class="icons">
+          <button id="langToggle" class="icon-btn" title="تغيير اللغة">EN</button>
+          <button id="loginBtn" class="icon-btn">دخول / تسجيل</button>
+          <button id="cartBtn" class="icon-btn">🛒 <span id="cartCount">0</span></button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <div class="container">
+        <ul>
+          <li><a href="#" data-cat="all">الرئيسية</a></li>
+          <li><a href="#" data-cat="pigeon">أعلاف الحمام</a></li>
+          <li><a href="#" data-cat="ornamental">طيور الزينة</a></li>
+          <li><a href="#" data-cat="mixes">الخلطات الخاصة</a></li>
+          <li><a href="#" data-cat="offers">العروض</a></li>
+          <li><a href="#blog">المدونة</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <h2>أعلاف بجودة عالية — توصيل سريع داخل الموصل</h2>
+          <p>لكلّ ٢٥ كغم تعتبر طلبية مستقلة. توصيل للمحافظات: 6000 دينار. داخل الموصل: 2000–5000 دينار.</p>
+          <a id="ctaShop" class="btn">تسوّق الآن</a>
+        </div>
+        <img src="https://via.placeholder.com/420x260?text=Feed+Image" alt="أعلاف">
+      </div>
+    </section>
+
+    <section class="container products-section">
+      <div class="section-head">
+        <h3>منتجاتنا</h3>
+        <div class="filter">
+          <label>تصنيف:</label>
+          <select id="filterCategory">
+            <option value="all">الكل</option>
+            <option value="pigeon">أعلاف الحمام</option>
+            <option value="ornamental">طيور الزينة</option>
+            <option value="mixes">الخلطات</option>
+            <option value="offers">العروض</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="productsGrid" class="grid">
+        <!-- بطاقات المنتجات تُملأ بالـ JS -->
+      </div>
+    </section>
+
+    <section class="container reviews" id="reviews">
+      <h3>تقييمات العملاء</h3>
+      <div id="reviewsList">
+        <!-- تقييمات افتراضية -->
+        <div class="review">
+          <strong>أحمد</strong>
+          <p>خلطة ممتازة، الطيور صحتهم تحسنت.</p>
+        </div>
+        <div class="review">
+          <strong>مريم</strong>
+          <p>وصلت بسرعة والتغليف جيد.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog" class="container blog">
+      <h3>مقالات ونصائح</h3>
+      <article>
+        <h4>أفضل أعلاف للحمام في المناخ الحار</h4>
+        <p>مقال قصير عن مكونات الخلطة التي تساعد الحمام بالبقاء بصحة جيدة في الصيف...</p>
+        <a class="read-more" href="#">اقرأ المزيد</a>
+      </article>
+    </section>
+  </main>
+
+  <!-- سلة التسوق - نافذة جانبية -->
+  <aside id="cartSidebar" class="cart-sidebar hidden" aria-hidden="true">
+    <div class="cart-header">
+      <h3>سلة التسوق</h3>
+      <button id="closeCart" class="close-btn">×</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="totals">
+        <div>المجموع: <strong id="cartTotal">0</strong> د.ع</div>
+      </div>
+      <button id="checkoutBtn" class="btn primary">الدفع وطلب</button>
+    </div>
+  </aside>
+
+  <!-- تسجيل الدخول / تسجيل -->
+  <div id="authModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-content">
+      <button id="closeAuth" class="close-btn">×</button>
+      <h3>دخول / تسجيل</h3>
+
+      <form id="authForm">
+        <label>الاسم</label>
+        <input id="nameInput" required placeholder="اسمك">
+        <label>البريد الإلكتروني</label>
+        <input id="emailInput" type="email" required placeholder="email@example.com">
+        <label>رقم الهاتف</label>
+        <input id="phoneInput" placeholder="0770xxxxxxx">
+        <button type="submit" class="btn">حفظ وتسجيل</button>
+      </form>
+      <small>البيانات تُحفظ محلياً لهذا التمثيل. لاحقاً سنربطها بقاعدة بيانات فعلية.</small>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>تواصل معنا</h4>
+        <p>موصل - حي البلديات</p>
+        <p>واتساب: 07xxxxxxxx</p>
+      </div>
+      <div>
+        <h4>روابط</h4>
+        <ul>
+          <li><a href="#">عن المتجر</a></li>
+          <li><a href="#">سياسة الخصوصية</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>اشترك بالنشرة</h4>
+        <form id="newsletterForm">
+          <input id="newsletterEmail" placeholder="بريدك الالكتروني">
+          <button class="btn">اشترك</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container copyright">
+      <p>© <span id="year"></span> أعلاف السالم — جميع الحقوق محفوظة</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
